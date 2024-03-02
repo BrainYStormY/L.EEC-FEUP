@@ -35,6 +35,7 @@ void Veterinario::setEspecialidade(string spec)
 
 Animal::Animal(string spec, bool sex, string nom, int idad)
 {
+	//unfinished
 	especie = spec;
 	sexo = sex;
 	nome = nom;
