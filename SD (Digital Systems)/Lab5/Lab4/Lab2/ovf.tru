@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<truthTable>
+  <variables>
+    <variable name="sub"/>
+    <variable name="A7"/>
+    <variable name="B7"/>
+    <variable name="R7"/>
+  </variables>
+  <results>
+    <result>
+      <name>ovf</name>
+      <values class="BoolTable">0100001000011000</values>
+    </result>
+  </results>
+</truthTable>

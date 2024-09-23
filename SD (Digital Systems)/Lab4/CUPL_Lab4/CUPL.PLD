@@ -1,0 +1,22 @@
+Name     Lab4.dig ;
+PartNo   00 ;
+Date     13.12.2023 ;
+Revision 01 ;
+Designer BrainYStormY ;
+Company  unknown ;
+Assembly None ;
+Location unknown ;
+Device   g16v8a ;
+
+/* inputs */
+PIN 2 = CX;
+PIN 3 = FIM;
+PIN 4 = UABO;
+
+/* outputs */
+PIN 12 = M1;
+PIN 13 = M2;
+
+/* combinatorial logic */
+M1 = CX & !FIM & !UABO;
+M2 = (!CX & !FIM) # (!FIM & UABO);

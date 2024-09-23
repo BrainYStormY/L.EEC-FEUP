@@ -1,0 +1,95 @@
+Lab 7
+
+7.
+d)
+#instrç	OPR	SEL	CE	Efeito
+0	001	000	00	A  <- A - A  <=>  A <- 0
+1	000	100	01	R1 <- X
+2	101	001	10	JNZ 6  ((R = R1 = X) ?= 0)
+3	000	000	11	R3 <- A  <=>  R3 <- 0
+4	000	101	01	R1 <- 0x01
+5	101	001	01	JNZ 5 (R = R1 = 0x01 != 0) !OCORRE SEMPRE!
+6	010	001	00	A  <- A + R1  <=>  A <- 0 + X  <=>  A <- X != 0
+7	000	101	01	R1 <- 0x01
+8	101	000	01	JNZ 1 (R = R1 = 0x01 != 0) !OCORRE SEMPRE!
+
+Sequência
+A  <- 0
+*
+R1 <- X
+ SE
+   X == 0  =>
+R3 <- 0
+R1 <- 0x01
+fim (ciclo infinito de auto-repetição (da instrução 5))
+   X != 0  =>
+A  <- X
+R1 <- 0x01
+recomeça em *
+
+e)
+#instrç	OPR	SEL	CE	Efeito
+0	001	000	01	R1 <- A - A  <=>  R1 <- 0
+1	000	100	00	R2  <- X[i]
+2	000	000	10	R2 <- A  <=>  R2 <- X[i]
+3	001	011	00	A  <- A - R3  <=>  A <- X[i] - X[i-1] (R3 começa como 0 e o [i-1] representa o registo anterior)
+4	110	001	00	A  <- A & R1  <=>  {A <- X[i] - X[i-1]} & 
+5	101	000	01	JNZ 1 (R = A & R1)
+6	000	010	11	R3 <- R2  <=>  R3 <- X[i]
+7	101	000	01	JNZ 1 (R = )
+
+Sequência
+R1 <- 0
+*
+R2 <- X
+ SE
+   X == 0  =>
+R3 <- 0
+R1 <- 0x01
+fim
+   X != 0  =>
+recomeça em *
+R3 <- X_2
+recomeça em *
+
+f)
+#instrç	OPR	SEL	CE	Efeito
+0	001	000	00	A  <- A - A  <=>  A <- 0
+1	000	000	10	R2 <- A  <=>  R2 <- 0
+2	000	100	01	R1 <- X (desnecessário pois todos são inicializados a 0)
+3	101	001	11	JNZ 7  ((R = R1 = X) ?= 0)
+4	000	010	11	R3 <- R2
+5	000	101	01	R1 <- 0x01
+6	101	001	10	JNZ 6 (R = R1 = 0x01 != 0) !OCORRE SEMPRE!
+7	010	001	00	A  <- A + R1  <=>  A <- 0 + X  <=>  A <- X != 0
+8	010	000	00	A  <- A + A <=> A <- 2A  <=>  A <- A << 1
+9-14	"
+15	101	000	10	JNZ 2 (se == 0  <=>  o nº é par)
+16	000	010	00	A  <- R2
+17	010	101	10	R2 <- A + 0x01
+18	001	000	00	A  <- A - A  <=>  A <- 0
+19	000	101	01	R1 <- 0x01
+20	101	000	10	JNZ 2 (R = R1 = 0x01 != 0) !OCORRE SEMPRE!
+
+Sequência
+A  <- 0
+R2 <- 0 (desnecessário pois todos são inicializados a 0)
+*
+R1 <- X
+ SE
+   X == 0  =>
+R3 <- R2
+R1 <- 0x01
+fim
+   X != 0  =>
+A  <- X
+A  <- A << 1 (7x)
+ SE
+   A == 0  =>
+A  <- R2
+R2 <- A + 0x01
+A  <- 0
+R1 <- 0x01
+recomeça em *
+   A != 0  =>
+recomeça em *

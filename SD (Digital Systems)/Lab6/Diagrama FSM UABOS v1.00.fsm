@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fsm>
+  <states>
+    <state>
+      <values>M2=1</values>
+      <position x="-60.0" y="-60.0"/>
+      <number>0</number>
+      <name>Nada</name>
+      <radius>70</radius>
+      <isInitial>true</isInitial>
+      <initialAngle>12</initialAngle>
+      <defaultDC>false</defaultDC>
+    </state>
+    <state>
+      <values>M1=1</values>
+      <position x="300.0" y="-60.0"/>
+      <number>1</number>
+      <name>Caixa Vazia</name>
+      <radius>70</radius>
+      <isInitial>false</isInitial>
+      <initialAngle>12</initialAngle>
+      <defaultDC>false</defaultDC>
+    </state>
+    <state>
+      <values>M2=1</values>
+      <position x="120.0" y="240.0"/>
+      <number>2</number>
+      <name>Caixa c/ UABO</name>
+      <radius>70</radius>
+      <isInitial>false</isInitial>
+      <initialAngle>12</initialAngle>
+      <defaultDC>false</defaultDC>
+    </state>
+    <state>
+      <values></values>
+      <position x="-420.0" y="-240.0"/>
+      <number>3</number>
+      <name>Terminado</name>
+      <radius>70</radius>
+      <isInitial>false</isInitial>
+      <initialAngle>12</initialAngle>
+      <defaultDC>false</defaultDC>
+    </state>
+  </states>
+  <transitions>
+    <transition>
+      <values></values>
+      <position x="120.0" y="-174.94781"/>
+      <fromState reference="../../../states/state"/>
+      <toState reference="../../../states/state[2]"/>
+      <condition>~FIM*CX*~UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="330.3128" y="162.18768"/>
+      <fromState reference="../../../states/state[2]"/>
+      <toState reference="../../../states/state[3]"/>
+      <condition>UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="-91.7656" y="163.05936"/>
+      <fromState reference="../../../states/state[3]"/>
+      <toState reference="../../../states/state"/>
+      <condition>CX=0</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="-58.86357" y="-220.01456"/>
+      <fromState reference="../../../states/state"/>
+      <toState reference="../../../states/state"/>
+      <condition>~FIM*~CX=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="120.0" y="-52.666203"/>
+      <fromState reference="../../../states/state[2]"/>
+      <toState reference="../../../states/state"/>
+      <condition>~CX*~UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="442.65848" y="-115.85499"/>
+      <fromState reference="../../../states/state[2]"/>
+      <toState reference="../../../states/state[2]"/>
+      <condition>CX*~UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="228.71585" y="101.22951"/>
+      <fromState reference="../../../states/state[3]"/>
+      <toState reference="../../../states/state[2]"/>
+      <condition>CX*~UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="10.989548" y="101.40627"/>
+      <fromState reference="../../../states/state"/>
+      <toState reference="../../../states/state[3]"/>
+      <condition>~FIM*CX*UABO=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="-274.5324" y="-80.93521"/>
+      <fromState reference="../../../states/state"/>
+      <toState reference="../../../states/state[4]"/>
+      <condition>FIM=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="-523.5437" y="-332.1723"/>
+      <fromState reference="../../../states/state[4]"/>
+      <toState reference="../../../states/state[4]"/>
+      <condition>FIM=1</condition>
+    </transition>
+    <transition>
+      <values></values>
+      <position x="-216.21072" y="-197.57854"/>
+      <fromState reference="../../../states/state[4]"/>
+      <toState reference="../../../states/state"/>
+      <condition>FIM=0</condition>
+    </transition>
+  </transitions>
+</fsm>
